@@ -1,16 +1,14 @@
-import { useState } from 'react';
-
 import './AccordionPanel.css';
 
-export default function AccordionPanel({ title, children }) {
-  const [isExpanded, setIsExpanded] = useState(false);
-
+export default function AccordionPanel({
+  title,
+  isExpanded,
+  onShow,
+  children
+}) {
   return (
     <section>
-      <h3 onClick={() => setIsExpanded(!isExpanded)}>
-        {(isExpanded ? '⮟' : '⮞') + ' ' + title}
-      </h3>
-
+      <h3 onClick={onShow}>{(isExpanded ? '⮟' : '⮞') + ' ' + title}</h3>
       {isExpanded && (<p>{children}</p>)}
     </section>
   );
